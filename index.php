@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Map</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<style>
+			html, body, #map
+			{
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			#sidebar
+			{
+				position:absolute;
+				width:200px;
+				top:50px;
+				right:0;
+				margin:0;
+				padding:10px;
+				display:block;				
+				background:rgba(0,0,0,0.3);
+				border-top-left-radius:10px;
+				border-bottom-left-radius:10px;
+			}
+			#sidebar.hover { background:rgba(0,100,0,0.3) }
+			#sidebar * { margin-top:10px; }
+			#fileInput
+			{
+				display:block;
+				width:200px;
+				overflow:hidden;
+				width:100%;
+			}
+
+			#sidebar textarea
+			{
+				width:100%;
+				height:100px;
+			}
+
+			#overlay
+			{
+				margin: auto;
+				position: absolute;
+				top:10px; left: 0; right: 0;
+				width:1200px;
+				display:none;
+				border:5px solid white;
+				border-radius:10px;
+			}
+			#files { width:100%; height:200px; }
+		</style>
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing"></script>
+		<script src="exif.js"></script>
+		<script src="scripts.js?<?= time() ?>"></script>
+	</head>
+	<body>
+
+		<div id="map"></div>
+		<div id="sidebar">
+			<input type="file" value="Arquivos" multiple id="fileInput" />
+			<input type="button" value="Atualizar" onclick="containsLocation();" />
+			<br />
+			<input type="button" value="Baixar Selec." onclick="download();" />
+			<textarea id="names"></textarea>
+			<select multiple id="files"></select>
+		</div>
+		<div id="overlay"></div>
+	</body>
+</html>
